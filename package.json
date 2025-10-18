@@ -1,0 +1,22 @@
+{
+  "name": "mahalaxmi-krushi-seva-kendra",
+  "version": "1.0.0",
+  "description": "Landing page for Mahalaxmi Krushi Seva Kendra, an E-commerce platform connecting farmers to markets.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server .",
+    "build": "echo 'Build process not defined yet.'"
+  },
+  "keywords": [
+    "e-commerce",
+    "farming",
+    "agriculture",
+    "landing page"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

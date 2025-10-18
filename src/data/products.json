@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": {
+        "en": "Organic Fertilizer",
+        "mr": "सेंद्रिय खत",
+        "hi": "जैविक उर्वरक"
+      },
+      "description": {
+        "en": "High-quality organic fertilizer to enhance soil health and crop yield.",
+        "mr": "मातीच्या आरोग्यास व उत्पादन वाढीसाठी उच्च दर्जाचे सेंद्रिय खत.",
+        "hi": "मिट्टी के स्वास्थ्य और फसल उपज बढ़ाने के लिए उच्च-गुणवत्ता जैविक उर्वरक।"
+      },
+      "price": 500,
+      "imageUrl": "assets/products/fertilizer.webp"
+    },
+    {
+      "id": 2,
+      "name": {
+        "en": "Hybrid Seeds",
+        "mr": "हायब्रिड बियाणे",
+        "hi": "हाइब्रिड बीज"
+      },
+      "description": {
+        "en": "Premium hybrid seeds for various crops, ensuring better growth and productivity.",
+        "mr": "विविध पिकांसाठी उच्च प्रतीचे हायब्रिड बियाणे, उत्तम वाढ व उत्पादनासाठी.",
+        "hi": "विभिन्न फसलों के लिए प्रीमियम हाइब्रिड बीज, बेहतर विकास और उत्पादन सुनिश्चित करते हैं।"
+      },
+      "price": 300,
+      "imageUrl": "assets/products/hybrid-seeds.jpg"
+    },
+    {
+      "id": 3,
+      "name": {
+        "en": "Pesticides",
+        "mr": "किटकनाशके",
+        "hi": "कीटनाशक"
+      },
+      "description": {
+        "en": "Eco-friendly pesticides to protect your crops from pests and diseases.",
+        "mr": "पिकांना कीड व रोगांपासून सुरक्षित ठेवणारे पर्यावरणास अनुकूल किटकनाशक.",
+        "hi": "कीटों और रोगों से आपकी फसलों की रक्षा के लिए पर्यावरण-अनुकूल कीटनाशक।"
+      },
+      "price": 700,
+      "imageUrl": "assets/products/pesticide.jpeg"
+    }
+  ]
+}

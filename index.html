@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title data-i18n="meta.title">Mahalaxmi Krushi Seva Kendra — Farming Chemicals & Agriculture Products</title>
+    <meta name="description" data-i18n="meta.description"
+        content="Mahalaxmi Krushi Seva Kendra — Trusted agricultural retailer helping farmers buy quality farming chemicals, seeds, and tools. Learn with blogs & videos to grow better crops." />
+    <meta name="keywords"
+        content="Farming Chemicals, Agriculture Products, Organic Growth, Farmer Supplies, Mahalaxmi Krushi" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://example.com/" />
+    <meta name="theme-color" content="#b76b00" />
+
+    <!-- Google Font (Noto Sans with Devanagari for Marathi/Hindi) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Responsive video embeds -->
+    <style>
+        /* Responsive grid for media/video cards */
+        .media-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            background: #000;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .media-card h3 {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Mobile optimization: Show image first, then content */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column-reverse !important;
+            }
+
+            .hero-image-wrapper {
+                margin-bottom: 2rem;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- Google Analytics / GTM placeholder -->
+    <script>
+        /* Google Analytics placeholder - replace with actual snippet */
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag(){dataLayer.push(arguments);}
+        // gtag('js', new Date());
+        // gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Structured Data: Organization + sample products -->
+    <script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Organization",
+	  "name": "Mahalaxmi Krushi Seva Kendra",
+	  "url": "https://example.com/",
+	  "logo": "https://example.com/logo.png",
+	  "sameAs": []
+	}
+	</script>
+
+    <script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "ItemList",
+	  "itemListElement": [
+		{
+		  "@type": "Product",
+		  "name": "High Yield Fertilizer",
+		  "image": "https://images.unsplash.com/photo-1582719478174-7b5f4d40e2f7?w=800&auto=format&fit=crop&q=60",
+		  "description": "Balanced NPK fertilizer to boost crop growth.",
+		  "sku": "MFY-001",
+		  "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "850.00" }
+		},
+		{
+		  "@type": "Product",
+		  "name": "Organic Pesticide",
+		  "image": "https://images.unsplash.com/photo-1592928305392-2c52c29a3a0c?w=800&auto=format&fit=crop&q=60",
+		  "description": "Biodegradable pest control for vegetables.",
+		  "sku": "MOP-002",
+		  "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "420.00" }
+		}
+	  ]
+	}
+	</script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a class="brand" href="#" aria-label="Mahalaxmi Krushi Seva Kendra home">
+                <img src="assets/ml.png" alt="Mahalaxmi Krushi Seva Kendra logo" class="logo">
+                <span class="brand-name" data-i18n="brand.name">Mahalaxmi Krushi Seva Kendra</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Primary">
+                <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navList"
+                    aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="navList" class="nav-list">
+                    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#products" data-i18n="nav.products">Products</a></li>
+                    <li><a href="#blogs" data-i18n="nav.blogs">Blogs</a></li>
+                    <li><a href="#about" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="lang-toggle" aria-hidden="false" role="region" aria-label="Language switcher">
+                <button data-lang="en" class="lang active" aria-pressed="true">EN</button>
+                <button data-lang="mr" class="lang" aria-pressed="false">मराठी</button>
+                <button data-lang="hi" class="lang" aria-pressed="false">हिन्दी</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="hero-bg-pattern"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 id="hero-title" class="hero-title" data-i18n="hero.title">Trusted Farming Chemicals &amp;
+                        Agriculture Products</h1>
+                    <p class="hero-sub" data-i18n="hero.sub">Connecting farmers directly to quality inputs, advice, and
+                        market insights to increase yield and income.</p>
+                    <div class="hero-cta">
+                        <a href="#products" class="btn btn-primary" data-i18n="hero.explore">Explore Products</a>
+                        <a href="#blogs" class="btn btn-outline" data-i18n="hero.learn">Learn from Blogs &amp;
+                            Videos</a>
+                    </div>
+                </div>
+
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-decoration"></div>
+                    <img src="assets/mahalaxmi.jpg" alt="Mahalaxmi deity image" class="hero-image" loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about section-padding" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="about-title" data-i18n="about.title">About Mahalaxmi Krushi Seva Kendra</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <p class="section-intro" data-i18n="about.p1">We connect rural farmers to genuine seeds, fertilizers,
+                    pesticides and farming tools
+                    while sharing practical, localised guidance via blogs and videos — helping you grow better crops and
+                    earn more.</p>
+                <ul class="features-grid">
+                    <li class="feature-card" data-i18n="feature.1">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-content">
+                            <strong>Genuine Inputs:</strong> Verified brands & quality checks
+                        </div>
+                    </li>
+                    <li class="feature-card" data-i18n="feature.2">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-content">
+                            <strong>Direct Supply:</strong> Competitive prices & transparent sourcing
+                        </div>
+                    </li>
+                    <li class="feature-card" data-i18n="feature.3">
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-content">
+                            <strong>Educational Content:</strong> Simple tips, videos & local examples
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="products" class="products section-padding" aria-labelledby="products-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="products-title" data-i18n="products.title">Featured Products</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle" data-i18n="products.subtitle">Carefully selected items for small and
+                        medium farms</p>
+                </div>
+                <div class="product-grid" id="productGrid">
+                    <!-- products will be injected here by script.js -->
+                </div>
+            </div>
+        </section>
+
+        <section id="blogs" class="blogs section-padding" aria-labelledby="blogs-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="blogs-title" data-i18n="blogs.title">Blogs & Video Previews</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle" data-i18n="blogs.subtitle">Practical tips, how-to videos, and local
+                        success stories</p>
+                </div>
+                <div class="media-grid">
+                    <article class="media-card" aria-labelledby="vid1-title">
+                        <div class="video-embed" role="region" aria-label="Sustainable Farming Practices video">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/zGDkcFoWY7s?si=2T6WKDwo6emtcFpj"
+                                title="Sustainable Farming Practices"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3 id="vid1-title">Sustainable Farming Practices</h3>
+                    </article>
+
+                    <article class="media-card" aria-labelledby="vid2-title">
+                        <div class="video-embed" role="region" aria-label="Bamboo farming video">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/vzJ3RF3fyLA?si=5HpKoOnrxc1B2MoD"
+                                title="Bamboo Farming"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3 id="vid2-title">Bamboo Farming</h3>
+                    </article>
+
+                    <article class="media-card" aria-labelledby="vid3-title">
+                        <div class="video-embed" role="region" aria-label="Vertical farming video">
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/PpyUQ3I5qUA?si=1fme9MxA8r9GWWcv"
+                                title="Vertical Farming"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3 id="vid3-title">Vertical Farming</h3>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials section-padding" aria-labelledby="test-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="test-title" data-i18n="testimonials.title">Farmer Success Stories</h2>
+                    <div class="title-underline"></div>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p data-i18n="test.1">"We increased yield by 20% after switching to guided inputs from
+                            Mahalaxmi. Helpful team and timely delivery."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">R</div>
+                            <div class="author-info">
+                                <div class="author-name" data-i18n="test.1.author">Ramesh Naik</div>
+                                <div class="author-location">Satara</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote-icon">"</div>
+                        <p data-i18n="test.2">"The videos are simple to follow and helped me manage pests without
+                            harming the soil."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">S</div>
+                            <div class="author-info">
+                                <div class="author-name" data-i18n="test.2.author">Sangeeta Patil</div>
+                                <div class="author-location">Ahmednagar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section-padding" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="contact-title" data-i18n="contact.title">Contact & Enquiry</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle" data-i18n="contact.subtitle">Fill the form and our team will call you.
+                        No spam — just local help.</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mnngweka" method="POST"
+                        aria-label="Contact form">
+                        <div class="form-group">
+                            <label for="name">
+                                <span data-i18n="contact.name">Name</span>
+                            </label>
+                            <input type="text" name="name" id="name" required placeholder=""
+                                data-i18n-placeholder="contact.name.pl">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">
+                                <span data-i18n="contact.phone">Phone</span>
+                            </label>
+                            <input type="tel" name="phone" id="phone" required placeholder=""
+                                data-i18n-placeholder="contact.phone.pl">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">
+                                <span data-i18n="contact.message">Message</span>
+                            </label>
+                            <textarea name="message" id="message" rows="4" placeholder=""
+                                data-i18n-placeholder="contact.message.pl"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large" id="sendBtn"
+                            data-i18n="contact.send">Send
+                            Enquiry</button>
+                        <p id="formMsg" class="form-msg" aria-live="polite"></p>
+                    </form>
+
+                    <div class="contact-info-cards">
+                        <div class="info-card">
+                            <div class="info-icon">📞</div>
+                            <div class="info-content">
+                                <strong data-i18n="contact.call.label">Call / WhatsApp</strong>
+                                <span data-i18n="contact.call">+91 758xxxxxx</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">✉️</div>
+                            <div class="info-content">
+                                <strong data-i18n="contact.email.label">Email</strong>
+                                <span>info@mahalaxmikrushi.com</span>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <div class="info-content">
+                                <strong data-i18n="contact.address.label">Address</strong>
+                                <span data-i18n="contact.address">Sangli, Maharashtra, India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <span data-i18n="back.top">↑</span>
+    </button>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="brand.name">Mahalaxmi Krushi Seva Kendra</h3>
+                <p data-i18n="footer.tag">Helping farmers grow better and earn more.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="#home" data-i18n="nav.home">Home</a>
+                    <a href="#products" data-i18n="nav.products">Products</a>
+                    <a href="#blogs" data-i18n="nav.blogs">Blogs</a>
+                    <a href="#about" data-i18n="nav.about">About</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" class="social-icon">
+                        <span data-i18n="social.facebook">Facebook</span>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="social-icon">
+                        <span data-i18n="social.youtube">YouTube</span>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="social-icon">
+                        <span data-i18n="social.instagram">Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© <span id="year"></span> <span data-i18n="brand.name">Mahalaxmi Krushi Seva Kendra</span>. <span
+                        data-i18n="footer.rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
