@@ -7,13 +7,19 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.mahalaxmikrushisevakendra.com/#features</loc>
+        <loc>https://www.mahalaxmikrushisevakendra.com/#about</loc>
         <lastmod>2023-10-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.mahalaxmikrushisevakendra.com/#categories</loc>
+        <loc>https://www.mahalaxmikrushisevakendra.com/#products</loc>
+        <lastmod>2023-10-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.mahalaxmikrushisevakendra.com/#blogs</loc>
         <lastmod>2023-10-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -25,15 +31,21 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://www.mahalaxmikrushisevakendra.com/#faq</loc>
+        <loc>https://www.mahalaxmikrushisevakendra.com/#contact</loc>
         <lastmod>2023-10-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://www.mahalaxmikrushisevakendra.com/#contact</loc>
+        <loc>https://www.mahalaxmikrushisevakendra.com/privacy-policy</loc>
         <lastmod>2023-10-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://www.mahalaxmikrushisevakendra.com/payment-terms</loc>
+        <lastmod>2023-10-01</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
     </url>
 </urlset>
