@@ -223,32 +223,138 @@ document.addEventListener("DOMContentLoaded", function () {
   // Simple contact form handler (no backend)
   const form = document.getElementById("contactForm");
   if (form) {
-    form.addEventListener("submit", (e) => {
+    // Check if form should be hidden on page load
+    const lastSubmission = localStorage.getItem("lastContactSubmission");
+    if (lastSubmission) {
+      const timeSinceLastSubmission = Date.now() - parseInt(lastSubmission);
+
+      if (timeSinceLastSubmission < 24 * 60 * 60 * 1000) {
+        // Hide form and show success message
+        const hoursRemaining = Math.ceil(
+          (24 * 60 * 60 * 1000 - timeSinceLastSubmission) / (60 * 60 * 1000)
+        );
+        showSuccessMessageOnly(hoursRemaining);
+      }
+    }
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
       const name = document.getElementById("name").value.trim();
       const phone = document.getElementById("phone").value.trim();
+      const message = document.getElementById("message").value.trim();
       const msgEl = document.getElementById("formMsg");
+      const sendBtn = document.getElementById("sendBtn");
+
+      // Check if name and phone are filled
       if (!name || !phone) {
         msgEl.textContent =
           translations[currentLang]["contact.validation"] ||
           "Please enter your name and phone number.";
+        msgEl.style.color = "#d32f2f";
         return;
       }
-      msgEl.textContent =
-        translations[currentLang]["contact.thanks"] ||
-        "Thank you — we will contact you shortly.";
-      form.reset();
-      setTimeout(() => (msgEl.textContent = ""), 6000);
+
+      // Check 24-hour cooldown
+      const lastSubmission = localStorage.getItem("lastContactSubmission");
+      if (lastSubmission) {
+        const timeSinceLastSubmission = Date.now() - parseInt(lastSubmission);
+        const hoursRemaining = Math.ceil(
+          (24 * 60 * 60 * 1000 - timeSinceLastSubmission) / (60 * 60 * 1000)
+        );
+
+        if (timeSinceLastSubmission < 24 * 60 * 60 * 1000) {
+          showSuccessMessageOnly(hoursRemaining);
+          return;
+        }
+      }
+
+      // Disable button and show loading state
+      sendBtn.disabled = true;
+      sendBtn.textContent = "Sending...";
+      msgEl.textContent = "";
+
+      try {
+        // Submit to Formspree
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          // Store submission timestamp
+          localStorage.setItem("lastContactSubmission", Date.now().toString());
+
+          // Hide form and show big success message
+          showSuccessMessageOnly(24);
+        } else {
+          throw new Error("Form submission failed");
+        }
+      } catch (error) {
+        console.error("Form submission error:", error);
+        msgEl.textContent =
+          "Oops! Something went wrong. Please try again or call us directly.";
+        msgEl.style.color = "#d32f2f";
+        sendBtn.disabled = false;
+        sendBtn.textContent =
+          translations[currentLang]["contact.send"] || "Send Enquiry";
+      }
     });
   }
 
-  // Basic accessibility: allow click to submit contact form
-  const sendBtn = document.getElementById("sendBtn");
-  if (sendBtn) {
-    sendBtn.addEventListener(
-      "click",
-      () => form && form.dispatchEvent(new Event("submit"))
-    );
+  // Function to show success message and hide form
+  function showSuccessMessageOnly(hoursRemaining) {
+    const form = document.getElementById("contactForm");
+    const contactSection = document.getElementById("contact");
+
+    if (!form || !contactSection) return;
+
+    // Hide the form
+    form.style.display = "none";
+
+    // Check if success message already exists
+    let successDiv = document.getElementById("contactSuccessMessage");
+
+    if (!successDiv) {
+      // Create success message div
+      successDiv = document.createElement("div");
+      successDiv.id = "contactSuccessMessage";
+      successDiv.style.cssText = `
+        text-align: center;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+        color: white;
+        border-radius: 12px;
+        margin: 2rem 0;
+        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
+      `;
+
+      // Insert after form
+      form.parentNode.insertBefore(successDiv, form.nextSibling);
+    }
+
+    // Update content
+    successDiv.innerHTML = `
+      <div style="font-size: 4rem; margin-bottom: 1rem;">✓</div>
+      <h3 style="font-size: 1.8rem; margin-bottom: 1rem; font-weight: 600;">
+        Thank You for Your Enquiry!
+      </h3>
+      <p style="font-size: 1.2rem; margin-bottom: 1.5rem; opacity: 0.95;">
+        We have received your message successfully.
+      </p>
+      <p style="font-size: 1.1rem; margin-bottom: 0.5rem; opacity: 0.9;">
+        Our team will contact you shortly.
+      </p>
+      <p style="font-size: 0.95rem; opacity: 0.8; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.3);">
+        You can submit another enquiry in ${hoursRemaining} hour(s).
+      </p>
+    `;
+
+    successDiv.style.display = "block";
   }
 
   // Translation data
@@ -608,9 +714,9 @@ document.addEventListener("DOMContentLoaded", function () {
           <h3 id="product-${p.id}-name">${name}</h3>
           <p class="prod-desc">${desc}</p>
           <p class="price">${price}</p>
-          <a class="btn small" href="#contact">${
-            window.translations?.[lang]?.["product1.button"] || "Buy / Enquire"
-          }</a>
+          <a class="btn small product-enquiry-btn" href="#contact" data-product-name="${name}">${
+          window.translations?.[lang]?.["product1.button"] || "Buy / Enquire"
+        }</a>
         `;
         grid.appendChild(article);
       });
@@ -646,16 +752,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle product enquiry buttons
   function handleProductEnquiry(productName) {
-    const messageField = document.getElementById('message');
-    const contactSection = document.getElementById('contact');
-    
+    const messageField = document.getElementById("message");
+    const contactSection = document.getElementById("contact");
+
+    console.log("handleProductEnquiry called with:", productName);
+    console.log("messageField:", messageField);
+    console.log("contactSection:", contactSection);
+
+    if (!messageField || !contactSection) {
+      console.error("Message field or contact section not found!");
+      return;
+    }
+
     // Pre-fill message with product enquiry
     const enquiryText = `I am interested in: ${productName}\n\n`;
     messageField.value = enquiryText;
-    
+
     // Scroll to contact form
-    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    
+    contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+
     // Focus on message field after scrolling
     setTimeout(() => {
       messageField.focus();
@@ -664,63 +779,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   }
 
-  // Update product card rendering to add enquiry button click handler
-  // (Modify the existing renderProducts function or add event delegation)
-  document.addEventListener('DOMContentLoaded', () => {
-    // Event delegation for product enquiry buttons
-    const productGrid = document.getElementById('productGrid');
-    if (productGrid) {
-      productGrid.addEventListener('click', (e) => {
-        if (e.target.classList.contains('btn-outline') || e.target.closest('.btn-outline')) {
-          e.preventDefault();
-          const productCard = e.target.closest('.product-card');
-          const productName = productCard.querySelector('h3').textContent;
-          handleProductEnquiry(productName);
-        }
-      });
-    }
-    
-    // Handle form submission
-    const contactForm = document.getElementById('contactForm');
-    const formMsg = document.getElementById('formMsg');
-    
-    if (contactForm) {
-      contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const sendBtn = document.getElementById('sendBtn');
-        const originalText = sendBtn.textContent;
-        
-        // Show loading state
-        sendBtn.disabled = true;
-        sendBtn.textContent = 'Sending...';
-        formMsg.textContent = '';
-        
-        try {
-          const formData = new FormData(contactForm);
-          const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
-          
-          if (response.ok) {
-            formMsg.textContent = 'Thank you! Your enquiry has been sent successfully.';
-            formMsg.style.color = '#2e7d32';
-            contactForm.reset();
-          } else {
-            throw new Error('Form submission failed');
-          }
-        } catch (error) {
-          formMsg.textContent = 'Oops! Something went wrong. Please try again.';
-          formMsg.style.color = '#d32f2f';
-        } finally {
-          sendBtn.disabled = false;
-          sendBtn.textContent = originalText;
-        }
-      });
+  // Event delegation for product enquiry buttons - must be outside DOMContentLoaded
+  document.body.addEventListener("click", function (e) {
+    const target = e.target;
+
+    // Check if clicked element is a product enquiry button
+    if (
+      target.classList.contains("product-enquiry-btn") ||
+      target.closest(".product-enquiry-btn")
+    ) {
+      e.preventDefault();
+      console.log("Product enquiry button clicked!");
+
+      const btn = target.classList.contains("product-enquiry-btn")
+        ? target
+        : target.closest(".product-enquiry-btn");
+
+      const productName = btn.getAttribute("data-product-name");
+      console.log("Product name:", productName);
+
+      if (productName) {
+        handleProductEnquiry(productName);
+      } else {
+        console.error("No product name found on button");
+      }
     }
   });
 });
