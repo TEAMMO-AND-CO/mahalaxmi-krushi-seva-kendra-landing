@@ -1592,3 +1592,49 @@ body {
     text-align: left;
   }
 }
+
+/* Policy Pages */
+.policy-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.policy-page h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.policy-page .last-updated {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+.policy-page section {
+  margin-bottom: 2.5rem;
+}
+
+.policy-page h2 {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--light);
+}
+
+.policy-page p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.policy-page ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.policy-page li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
